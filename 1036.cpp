@@ -1,4 +1,41 @@
 #include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    string female, male;
+    int femalegrade = -1, malegrade = 101;
+    for(int i = 0; i < n; i++) {
+        string name, gender, id;
+        int grade;
+        cin >> name >> gender >> id >> grade;
+        if(gender == "F") {
+            if(femalegrade < grade) {
+                femalegrade = grade;
+                female = name + " " + id;
+            }
+        } else if(malegrade > grade) {
+                malegrade = grade;
+                male = name + " " + id;
+            }
+    }
+    if(femalegrade != -1)
+        cout << female << endl;
+    else
+        cout << "Absent\n";
+    if(malegrade != 101)
+        cout << male << endl;
+    else
+        cout << "Absent\n";
+    if(femalegrade != -1 && malegrade != 101)
+        cout << femalegrade - malegrade << endl;
+    else
+        cout << "NA" << endl;
+    return 0;
+}
+
+/*  不用排序
+#include <iostream>
 #include <algorithm>
 using namespace std;
 struct stu_node {
@@ -39,7 +76,7 @@ int main()
     }
     if(flag0 == -1) cout << "Absent" << endl;
     for(int i = n-1; i >= 0; --i) {
-        if(stu[n-1].gender == 1) {
+        if(stu[i].gender == 1) {
             flag1 = i;
             cout << stu[i].name << " " << stu[i].id << endl;
             break;
@@ -53,3 +90,4 @@ int main()
     
     return 0;
 }
+*/
